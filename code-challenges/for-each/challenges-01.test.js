@@ -21,7 +21,7 @@ const greeting = (word) => {
 const speaker = (message, callback) => {
   return callback(message);
 };
- 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -46,11 +46,14 @@ describe('Testing challenge 2', () => {
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-    value.push
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  for (let i =0; i<times; i++) {
+    addValues(arr,num);
+  }
+  return arr; 
 };
 
 /* ------------------------------------------------------------------------------------------------
