@@ -51,9 +51,9 @@ const addValues = (arr, value) => {
 
 const addNumbers = (num, arr, times, callback) => {
   for (let i =0; i<times; i++) {
-    addValues(arr,num);
+    callback(arr,num);
   }
-  return arr; 
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,11 +76,16 @@ describe('Testing challenge 3', () => {
 ------------------------------------------------------------------------------------------------ */
 
 const removeOne = (num, arr) => {
-  // Solution code here...
+  if (num % 3 === 2){
+    arr.pop();
+  }
 };
 
 const removeElements = (arr, callback) => {
-  // Solution code here...
+  for(let i = 0; i<arr.length; i++) {
+    callback(arr[i],arr);
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,7 +102,10 @@ describe('Testing challenge 4', () => {
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // Solution code here...
+  arr.forEach(value => {
+    callback(value,arr);
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,7 +126,12 @@ describe('Testing challenge 5', () => {
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  arr.forEach(function (value, index, arr){
+    if (value %3 === 2){
+      arr.pop();
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -148,7 +161,13 @@ describe('Testing challenge 6', () => {
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  let array = [];
+  availableItems.forEach(item => {
+    if(item.available === true){
+      array.push(item.name);
+    }
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -175,7 +194,19 @@ describe('Testing challenge 7', () => {
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let fizzBuzzArray = [];
+  arr.forEach(value => {
+    if((value %3 === 0) && (value %5 === 0)){
+      fizzBuzzArray.push('Fizz Buzz');
+    }else if (value %3 === 0){
+      fizzBuzzArray.push('Fizz');
+    }else if (value %5 === 0){
+      fizzBuzzArray.push('Buzz');
+    }else{
+      fizzBuzzArray.push(value);
+    }
+  });
+  return(fizzBuzzArray);
 };
 
 /* ------------------------------------------------------------------------------------------------
