@@ -1,90 +1,85 @@
 'use strict';
 
+// import { tsArrayType } from "@babel/types";
+//worked on the challenge with cory and chance on 02/23/20
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
-
 Write a function named forLoopTwoToThe that, given an array of integers as input, iterates over the array and returns a new array. The returned array should contain the result of raising 2 to the power of the original input element.
-
 You may choose to complete this challenge using a for loop, for...in syntax, or for...of syntax.
-
 For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and 2 ^ 3 = 8.
-
-
-describe('Testing challenge 1', () => {
-  test('It should return two raised to the power of the integer', () => {
-    expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
-    expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
-  });
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  const testArray = [];
-  for(let value of arr){
-    testArray.push(Math.pow(2,value));
-  }
-  return testArray;
+  let newArr = [];
+  for (let i=0;i<arr.length;i++){
+    newArr.push(2**arr[i]);
+  };
+  return newArr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
-
 Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1, but uses forEach instead of a for loop.
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  const testArray = [];
-  arr.forEach(value =>{
-    testArray.push(Math.pow(2,value));
-  });
-  return testArray;
+  let newArr = [];
+  arr.forEach((i) => {
+    newArr.push(Math.pow(2, (i)));
+  })
+  return newArr
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
-
 Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-return arr.map(value=>(Math.pow(2,arr));
+  let newArr = arr.map(n =>(Math.pow(2, n)));
+  return newArr;
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
-
 Write a function named charCode that, given an array of letters as an input, uses map to return a new array where each element is the result of the `charCodeAt` method on the original array element.
-
 Read the MDN documentation on String.charCodeAt() if necessary.
-
 For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
 const charCode = (arr) => {
-  // Solution code here...
+  let charCodes = arr.map(v => v.charCodeAt());
+  return charCodes;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
-
 Write a function that, given an array of numbers as input, uses map to return a new array where each element is either the string "even" or the string "odd", based on each value.
-
 If any element in the array is not a number, the resulting array should have the string "N/A" in its place.
-
 For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.map( (val) => {
+    if ( typeof val === "string") {
+      newArr.push('N/A');
+    }
+    else if (val%2 === 0) {
+      newArr.push('even');
+    }
+    else {
+      newArr.push('odd');
+    }
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
-
 Use the snorlaxAbilities data, below, for this challenge.
-
 Write a function named extractAbilities that, given the array of abilities, uses map to create an array containing only the ability name.
-
 Note: Because this function is expecting the array of abilities, it will be invoked as:
 extractAbilities(snorlaxAbilities.abilities)
 ------------------------------------------------------------------------------------------------ */
@@ -120,19 +115,13 @@ const snorlaxAbilities = {
   weight: 4600,
 };
 
-const extractAbilities = (arr) => {
-  // Solution code here...
-};
+const extractAbilities = (arr) => arr.map( (value) => value.ability.name);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
-
 Use the snorlaxStats data, below, for this challenge.
-
 Write a function named extractStats that, given an array of stats, uses map to return an array of objects containing the stat name and the total.
-
 The total should be the sum of the effort and the baseStat.
-
 Here is an example of a single array element: { name: 'speed', total: 35 }
 ------------------------------------------------------------------------------------------------ */
 
@@ -168,18 +157,22 @@ const snorlaxStats = {
 };
 
 const extractStats = (arr) => {
-  // Solution code here...
+  
+  let stats = arr.map(function (obj) {
+    return {
+      name: obj.stat.name,
+      total: (obj.effort + obj.baseStat),
+    };
+  });
+  return stats;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
-
 All the code below will verify that your functions are working to solve the challenges.
-
 DO NOT CHANGE any of the below code.
-
 Run your tests from the console: jest challenges-07.test.js
-
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
