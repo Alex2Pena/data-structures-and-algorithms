@@ -13,8 +13,8 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-let regex = /\d/;
-return regex.test(input);
+  let regex = /\d/;
+  return regex.test(input);
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -25,14 +25,14 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-let regex = /\b[A-Z][a-z]*\b/g;
-let answer = str.match(regex);
-if(answer){
+  let regex = /\b[A-Z][a-z]*\b/g;
+  let answer = str.match(regex);
+  if(answer){
     return answer;
-}else{
+  }else{
     return [];
-}
-
+  }
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -40,14 +40,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-    let regex = /^[A-J]*\w+/mg;
-    let solution = [];
-    arr.forEach(city => {
-        if(regex.test(city)){
-            solution.push(city);
-        }
-    });
-    return solution;
+  let regex = /^[A-J]*\w+/mg;
+  let solution = [];
+  arr.forEach(city => {
+    if(regex.test(city)){
+      solution.push(city);
+    }
+  });
+  return solution;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -63,8 +63,8 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-let regex = /\bOct|oct(ober)?\b/gm;
-return regex.test(input);
+  let regex = /\bOct|oct(ober)?\b/gm;
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -78,8 +78,8 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-let regex = /\w+\s/gmi;
-return str.match(regex);
+  let regex = /\w+\s/gmi;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -95,8 +95,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-let regex = /[aeiou]/gmi;
-return str.replace(regex, '_');
+  let regex = /[aeiou]/gmi;
+  return str.replace(regex, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
