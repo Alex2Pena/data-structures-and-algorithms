@@ -1,5 +1,7 @@
 'use strict';
 
+// worked with cory & chance on this challenge.
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -9,7 +11,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce( function(accumulator,value,idx) {
+    accumulator = idx+1;
+    return accumulator;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,7 +74,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let names = arr.reduce((accumulator, value, idx) => {
+    accumulator[idx] = value.name;
+    return accumulator;
+  }, {});
+  return Object.values(names);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,9 +89,14 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
-const reversedString = (str) => {
-  // Solution code here...
+const reversedString = (arr) => {
+  const result = arr.split('').reduce( (elements, value) => {
+    elements.unshift(value);
+    return elements;
+  }, []).join('');
+  return result;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -133,9 +147,12 @@ const characters = [
   },
 ];
 
-const countNumberOfChildren = (arr) => {
-  // Solution code here...
-};
+const countNumberOfChildren = (arr) => arr.reduce( (elements,value) => {
+  if(value.children) {
+    elements += value.children.length;
+  }
+  return elements;
+}, 0);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -146,7 +163,11 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  let total = arr.reduce( function(accumulator,value,index) {
+    accumulator = accumulator+value;
+    return accumulator;
+  }, 0);
+  return total/(arr.length);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -166,9 +187,13 @@ const isPrime = (value) => {
   return value > 1;
 };
 
-const countPrimeNumbers = (arr) => {
-  // Solution code here...
-};
+const countPrimeNumbers = (arr) => arr.reduce((elements,value) =>{
+
+  if(isPrime(value)) {
+    elements++;
+  }
+  return elements;
+}, 0);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
