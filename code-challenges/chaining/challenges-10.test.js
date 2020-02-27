@@ -12,7 +12,14 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let arr=[];
+  for (let i= 0; i<=input.length-1;i++){
+    for (let j = 0; j<=input[i].length-1;j++){let nums = input[i][j];
+      arr.push(nums);
+    }
+  }
+  let counted = arr.filter(function(v){return v===target;});
+  return counted.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
