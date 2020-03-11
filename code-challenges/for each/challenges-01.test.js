@@ -6,20 +6,14 @@ CHALLENGE 1
 Write a function named greeting that takes in a string and returns the string in all uppercase letters.
 
 Then, write a function named speaker that takes in a string and a callback function. The speaker function should return the string in all uppercase letters only by invoking the callback.
-
-describe('Testing challenge 1', () => {
-  test('It should return the message with all uppercase characters', () => {
-    expect(speaker('hello 301 students!', greeting)).toStrictEqual('HELLO 301 STUDENTS!');
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  return word.toUpperCase();
+    return word.toUpperCase();
 };
 
 const speaker = (message, callback) => {
-  return callback(message);
+    return callback(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,25 +30,20 @@ Then, write a function named addNumbers that takes in four arguments:
 Within the addNumbers function, invoke the callback function as many times as necessary, based on the third argument of the addNumbers function.
 
 Return the modified array.
-
-describe('Testing challenge 2', () => {
-  test('It should add the number 8 to the array five times', () => {
-    expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
-    expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  arr.push(value);
+    arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  for (let i =0; i<times; i++) {
-    callback(arr,num);
-  }
-  return arr;
+    for (let i = 0; i < times; i++) {
+        callback(arr, num);
+    }
+    return arr;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -66,48 +55,32 @@ Hint: you may want to look into the modulo operation.
 Then, write a function named removeElements that takes in an array and a callback. This function should use a for loop to iterate over the array and invoke the callback once for each element in the array.
 
 Return the modified array.
-
-describe('Testing challenge 3', () => {
-  test('It should remove three elements from the array', () => {
-    expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
-    expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const removeOne = (num, arr) => {
-  if (num % 3 === 2){
-    arr.pop();
-  }
+    if (num % 3 === 2) {
+        arr.pop();
+    }
 };
 
 const removeElements = (arr, callback) => {
-  for(let i = 0; i<arr.length; i++) {
-    callback(arr[i],arr);
-  }
-  return arr;
+    for (let i = 0; i < arr.length; i++) {
+        callback(arr[i], arr);
+    }
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
 Write a function named removeWithForEach that produces the same output as challenge 3, but uses forEach.
-
-describe('Testing challenge 4', () => {
-  test('It should remove three elements from the array', () => {
-    expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
-    expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  arr.forEach(value => {
-    callback(value,arr);
-  });
-  return arr;
+    arr.forEach(value => {
+        callback(value, arr);
+    });
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -116,22 +89,15 @@ Write a function named removeWithAnon that produces the same output as challenge
 This function should use forEach again, but rather than taking in a callback as an argument, define an anonymous function as the argument to forEach.
 
 This anonymous function should accept up to three arguments: the element, the index, and the array.
-
-describe('Testing challenge 5', () => {
-  test('It should remove three elements from the array', () => {
-    expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
-    expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  arr.forEach(function (value, index, arr){
-    if (value %3 === 2){
-      arr.pop();
-    }
-  });
-  return arr;
+    arr.forEach(function (value, index, arr) {
+        if (value % 3 === 2) {
+            arr.pop();
+        }
+    });
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -149,25 +115,10 @@ The inventory is formatted like this:
 ]
 
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
-
-describe('Testing challenge 6', () => {
-  const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
-
-  test('It should only add the available items to the list', () => {
-    expect(createList(inventory)).toStrictEqual(['apples', 'pears', 'bananas']);
-    expect(createList(inventory).length).toStrictEqual(3);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  let array = [];
-  availableItems.forEach(item => {
-    if(item.available === true){
-      array.push(item.name);
-    }
-  });
-  return array;
+    // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -182,31 +133,10 @@ Iterate over the array using forEach to determine the output based on several ru
   - Otherwise, add the number to the output array.
 
 Return the resulting output array.
-
-describe('Testing challenge 7', () => {
-  const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-  test('It should print out messages or numbers', () => {
-    expect(fizzbuzz(inputs)).toStrictEqual([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16]);
-    expect(fizzbuzz(inputs).length).toStrictEqual(16);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  let fizzBuzzArray = [];
-  arr.forEach(value => {
-    if((value %3 === 0) && (value %5 === 0)){
-      fizzBuzzArray.push('Fizz Buzz');
-    }else if (value %3 === 0){
-      fizzBuzzArray.push('Fizz');
-    }else if (value %5 === 0){
-      fizzBuzzArray.push('Buzz');
-    }else{
-      fizzBuzzArray.push(value);
-    }
-  });
-  return(fizzBuzzArray);
+    // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -221,53 +151,68 @@ Run your tests from the console: jest challenges-01.test.js
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-  test('It should return the message with all uppercase characters', () => {
-    expect(speaker('hello 301 students!', greeting)).toStrictEqual('HELLO 301 STUDENTS!');
-  });
+    test('It should return the message with all uppercase characters', () => {
+        expect(speaker('hello 301 students!', greeting)).toStrictEqual('HELLO 301 STUDENTS!');
+    });
 });
 
 describe('Testing challenge 2', () => {
-  test('It should add the number 8 to the array five times', () => {
-    expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
-    expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
-  });
+    test('It should add the number 8 to the array five times', () => {
+        expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
+        expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
+    });
 });
 
 describe('Testing challenge 3', () => {
-  test('It should remove three elements from the array', () => {
-    expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
-    expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
-  });
+    test('It should remove three elements from the array', () => {
+        expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
+        expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
+    });
 });
 
 describe('Testing challenge 4', () => {
-  test('It should remove three elements from the array', () => {
-    expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
-    expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
-  });
+    test('It should remove three elements from the array', () => {
+        expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
+        expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
+    });
 });
 
 describe('Testing challenge 5', () => {
-  test('It should remove three elements from the array', () => {
-    expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
-    expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
-  });
+    test('It should remove three elements from the array', () => {
+        expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
+        expect(removeWithAnon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).length).toStrictEqual(7);
+    });
 });
 
 describe('Testing challenge 6', () => {
-  const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
+    const inventory = [{
+        name: 'apples',
+        available: true
+    }, {
+        name: 'pears',
+        available: true
+    }, {
+        name: 'oranges',
+        available: false
+    }, {
+        name: 'bananas',
+        available: true
+    }, {
+        name: 'blueberries',
+        available: false
+    }];
 
-  test('It should only add the available items to the list', () => {
-    expect(createList(inventory)).toStrictEqual(['apples', 'pears', 'bananas']);
-    expect(createList(inventory).length).toStrictEqual(3);
-  });
+    test('It should only add the available items to the list', () => {
+        expect(createList(inventory)).toStrictEqual(['apples', 'pears', 'bananas']);
+        expect(createList(inventory).length).toStrictEqual(3);
+    });
 });
 
 describe('Testing challenge 7', () => {
-  const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
-  test('It should print out messages or numbers', () => {
-    expect(fizzbuzz(inputs)).toStrictEqual([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16]);
-    expect(fizzbuzz(inputs).length).toStrictEqual(16);
-  });
+    test('It should print out messages or numbers', () => {
+        expect(fizzbuzz(inputs)).toStrictEqual([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16]);
+        expect(fizzbuzz(inputs).length).toStrictEqual(16);
+    });
 });

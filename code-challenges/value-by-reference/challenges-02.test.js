@@ -6,21 +6,11 @@ CHALLENGE 1
 
 Write a function that appends ' The end.' to a string, and returns the modified string. The original source string should not be modified.
 
-describe('Testing challenge 1', () => {
-  test('It should append without modifying the oiginal', () => {
-    const a = 'This is my story.';
-    const b = appendTheEnd(a);
-
-    expect(a).toStrictEqual('This is my story.');
-    expect(b).toStrictEqual('This is my story. The end.');
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-  const newString = str.concact(' The end. ');
+return str + ' The end.';
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -32,22 +22,11 @@ For example:
 const a = [1, 2, 3];
 appendFirstToLast(a);
 console.log(a) prints [1, 2, 3, 1]
-
-describe('Testing challenge 2', () => {
-  test('It should append by modifying the oiginal', () => {
-    const a = ['Yes', 'it', 'is'];
-    appendFirstToLast(a);
-
-    expect(a).toStrictEqual(['Yes', 'it', 'is', 'Yes']);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const appendFirstToLast = (arr) => {
-  const a = arr[0];
-  arr.push(arr[0]);
+    arr.push(arr[0]);
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
@@ -61,19 +40,10 @@ For example:
 const octavia = { fullName: 'Octavia Estelle Butler' };
 addBirthYearProperty(octavia, 1947);
 console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
-
-describe('Testing challenge 3', () => {
-  test('It should add a property to an object', () => {
-    const a = { fullName: 'Octavia Butler' };
-    addBirthYearProperty(a, 1947);
-
-    expect(a.yearBorn).toStrictEqual(1947);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
-  obj.yearBorn = year;
+    obj.yearBorn = year;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,24 +57,13 @@ For example:
 const people = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }];
 setStatusAsAuthor(people);
 console.log(people[1].isAuthor) prints true
-
-describe('Testing challenge 4', () => {
-  test('It should add a property to every object in an array', () => {
-    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
-    setStatusAsAuthor(a);
-
-    expect(a[0].isAuthor).toStrictEqual(true);
-    expect(a[1].isAuthor).toStrictEqual(true);
-    expect(a[2].isAuthor).toStrictEqual(true);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const setStatusAsAuthor = (people) => {
-  people.forEach(value => {
-  obj.isAuthor = true;
-  });
-  };
+    people.forEach(person =>{
+        person.isAuthor = true;
+    });
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -119,23 +78,14 @@ const a = [1, 2]; NOTE: If you assign an array to a `const`, you can't re-assign
 const b = [3, 4];
 append(a, b);
 console.log(a) prints [1, 2, 3, 4]
-
-describe('Testing challenge 5', () => {
-  test('It should append the second array to the first', () => {
-    const a = [1, 2, 3, 4];
-    const b = [5, 6, 7, 8];
-    append(a, b);
-
-    expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-  });
-});
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-  arr2.forEach (value => {
-    arr1.push(value)
-  });
-
+    arr2.forEach(number => {
+          arr1.push(number);
+    });
+    };
+    
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
