@@ -266,3 +266,4 @@ describe('Testing challenge 7', () => {
     expect(evenOddNumericValues(['1', 2, 3, '4', 5,'6'])).toStrictEqual(['even', 'odd', 'odd']);
   });
 });
+
