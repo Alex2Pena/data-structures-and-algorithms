@@ -50,8 +50,9 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  // Solution code here...
-};
+  arr.sort(function (a, b) {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -117,7 +118,12 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+arr.sort((a,b) => {
+  if(a.lastName < b.lastName){
+    return 1;
+  }else (a.lastName > b.lastName){
+    return -1;}
+});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -284,7 +290,7 @@ describe('Testing challenge 10', () => {
       new Meeting('Tuesday', '1145', '1315'),
       new Meeting('Wednesday', '0930', '1000'),
       new Meeting('Wednesday', '1300', '1500'),
-      new Meeting('Friday', '1200', '1345'),
+      new Meeting('Friday', '1200', '1345')
     ]);
   });
 });
