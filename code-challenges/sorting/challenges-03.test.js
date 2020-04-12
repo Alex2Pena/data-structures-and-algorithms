@@ -69,8 +69,7 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   arr.sort((a,b) => {
-    
-  })
+  });
   return arr;
 };
 
