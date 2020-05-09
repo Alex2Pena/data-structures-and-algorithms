@@ -12,6 +12,10 @@
 
 
 function insertShiftArray(arr, value){
+    // check parameters
+    if (!arr || !value){
+        return null;
+    }
     // create empty array
     let newArr = [];
 
