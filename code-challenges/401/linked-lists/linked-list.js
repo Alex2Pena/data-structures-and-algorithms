@@ -70,14 +70,6 @@ class LinkedList {
     // .append(value) which adds a new node with the given value to the end of the list
     append(value) {
         let node = new Node(value);
-        if (!this.head) {
-            this.head = node;
-        }
-        console.log('I am the appended node', node);
-        return node;
-    };
-    append(value) {
-        let node = new Node(value);
 
         if (!this.head) {
             this.head = node;
@@ -92,48 +84,53 @@ class LinkedList {
         return this;
     };
 
-        // .insertBefore(value, newVal) which add a new node with the given newValue immediately before the first value node
-        insertBefore(value, newVal) {
-            if(this.includes(value)){
-                let newNode = new Node(newVal);
-                let IamHere = this.head;
-                while (IamHere.next.value !== value){
-                    IamHere = IamHere.next;
-                }
+    // .insertBefore(value, newVal) which add a new node with the given newValue immediately before the first value node
+    insertBefore(value, newVal) {
+        if (this.includes(value)) {
+            let newNode = new Node(newVal);
+            let IamHere = this.head;
+            while (IamHere.next.value !== value) {
+                IamHere = IamHere.next;
             }
-        };
-        insertAt(element, index) – It inserts an element at the given index in a list.
-filter_none
-brightness_4
-// insert element at the position index 
-// of the list 
-class LinkedList {
-    constructor(value) {
-        this.head = null;
-        this.addToHead(value);
-        this.length = 0;
-    }
-    
-    addToHead(value) {
-        const newNode = { value }; // 1
-        newNode.next = this.head;  // 2
-        this.head = newNode;       // 3
-        this.length++;
-        return this;
-    }
-}
-
-const list = new LinkedList('first')
-    .addToHead('second')
-    .addToHead('third');
-
-
-
-        // .insertAfter(value, newVal) which add a new node with the given newValue immediately after the first value node
-        insertAfter(value, newValue){
-
         }
     };
+    // add ot the begining of the linked list
+    addToHead(value) {
+        const newNode = {
+            value
+        }; 
+        newNode.next = this.head; // 2
+        this.head = newNode; // 3
+        this.length++;
+        return this;
+
+    }
+
+    // It inserts an element at the given index in a list. Insert element at the position index 
+    insertAt(element, index) {
+        let newNode = new Node(element);
+        let IamHere = this.head;
+        let llIndex = 0;
+
+        while(llindex !== index) {
+            IamHere = IamHere.next;
+            llindex++;
+        }
+        
+
+
+        return this;
+    }
+
+
+
+
+
+    // .insertAfter(value, newVal) which add a new node with the given newValue immediately after the first value node
+    //     insertAfter(value, newValue){
+
+    //     }
+    // };
 
 
 
@@ -160,6 +157,8 @@ list.includes(77);
 list.includes(39);
 list.toString();
 list.append(102);
+list.addToHead(22);
+
 list.printList();
 
 
