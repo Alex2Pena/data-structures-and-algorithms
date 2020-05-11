@@ -1,8 +1,3 @@
-// Create a Stack class that has a top property. It creates an empty Stack when instantiated.
-// This object should be aware of a default empty value assigned to top when the stack is created.
-// Define a method called push which takes any value as an argument and adds a new node with that value to the top of the stack with an O(1) Time performance.
-// Define a method called pop that does not take any argument, removes the node from the top of the stack, and returns the node’s value.
-// Should raise exception when called on empty stack
 // Define a method called peek that does not take an argument and returns the value of the node located on top of the stack, without removing it from the stack.
 // Should raise exception when called on empty stack
 // Define a method called isEmpty that takes no argument, and returns a boolean indicating whether or not the stack is empty.
@@ -36,3 +31,113 @@
 // Can successfully empty a queue after multiple dequeues
 // Can successfully instantiate an empty queue
 // Calling dequeue or peek on empty queue raises exception
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+// Create a Stack class that has a top property. It creates an empty Stack when instantiated.
+class Stack {
+    constructor() {
+        // This object should be aware of a default empty value assigned to top when the stack is created.
+        this.top = null;
+    }
+    
+    // Define a method called push which takes any value as an argument and adds a new node with that value to the top of the stack with an O(1) Time performance.
+    push(value) {
+        const node = new Node(value);
+        if (!this.top) {
+            this.top = node;
+        } else {
+            // new node points to current top and then make new node top
+            node.next = this.top;
+            this.top = node;
+        }
+        return this;
+    }
+    // Define a method called pop that does not take any argument, removes the node from the top of the stack, and returns the node’s value.
+    pop() {
+        // Should raise exception when called on empty stack
+        if (!this.top) {
+            console.log('The stack is empty')
+            return null;
+        } else {
+            // top points current top's next node
+            const poppedValue = this.top.value;
+            this.top = this.top.next;
+            return poppedValue;
+        }
+    }
+    
+    peek() {
+      if (!this.top) {
+        return null;
+      } else {
+        const value = this.top.value
+        return value;
+      }
+    }
+  
+    // isEmpty
+    isEmpty() {
+      if (!this.top) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  
+  class Queue {
+    constructor() {
+      this.front = null;
+      this.rear = null;
+    }
+  
+    // enqueue
+    enqueue(value) {
+      const node = new Node(value);
+      if (!this.front) {
+        this.front = node;
+        this.rear = node;
+      } else {
+        this.rear.next = node;
+        this.rear = node;
+      }
+      return this;
+    }
+  
+    // dequeque
+    dequeque() {
+      if (!this.front) {
+        return null;
+      } else {
+        const value = this.front.value;
+        this.front = this.front.next;
+        return value;
+      }
+    }
+  
+    // peek
+    peek() {
+      if (!this.front) {
+        return null;
+      } else {
+        return this.front.value;
+      }
+    }
+  
+    // isEmpty
+    isEmpty() {
+      if (!this.front) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  
+  module.exports = { Node, Stack, Queue };
