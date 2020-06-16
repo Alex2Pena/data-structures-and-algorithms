@@ -1,21 +1,111 @@
-// Specifications
-// Read all of these instructions carefully. Name things exactly as described.
-// Do all your work in a public repository called data-structures-and-algorithms, with a well-formatted, detailed top-level README.md.
-// Create a new branch in your repo called breadth-first.
-// Your top-level readme should contain a “Table of Contents” navigation to all of your challenges and implementations so far. (Don’t forget to update it!)
-// This assignment should be completed within the challenges subdirectory of the repository.
-// On your branch…
-// C#: Extend your BinaryTree class according to the feature tasks below
-// JavaScript: Extend your BinaryTree class according to the feature tasks below
-// Python: Extend your BinaryTree class according to the feature tasks below
-// Java: Extend your BinaryTree class according to the feature tasks below
-// Include any language-specific configuration files required for this challenge to become an individual component, module, library, etc.
-// NOTE: You can find an example of this configuration for your course in your class lecture repository.
-// Feature Tasks
-// Write a breadth first traversal method which takes a Binary Tree as its unique input. Without utilizing any of the built-in methods available to your language, traverse the input tree using a Breadth-first approach, and return a list of the values in the tree in the order they were encountered.
-// Example
-// Input
-// example
+'use strict';
 
-// Output
-// [2,7,5,2,6,9,5,11,4]
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+//Big O Insert and search - O(log n), as long as the tree is balanced. Could be O(n) in the edge cases of one sided trees
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+  //For insert, if you needed to track duplicate nodes, you could add a property to the node that was a frequency counter, and then update that if needed. Currently, the solution just returns false if there is a duplicate value. Depends on you use case
+  insert(val) {
+    let newNode = new Node(val);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    } else {
+      let current = this.root;
+      while (true) {
+        if (value === current.value) return false;
+        if (val < current.value) {
+          if (current.left === null) {
+            current.left = newNode;
+            return this;
+          } else {
+            current = current.left;
+          }
+        }
+        else if (val > current.value) {
+          if (current.right === null) {
+            current.right = newNode;
+            return this;
+          } else {
+            current = current.right;
+          }
+        }
+      }
+    }
+  }
+  search(val) {
+    if (!this.root) return false;
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (val < current.value) {
+        current = current.left;
+      } else if (val > current.value) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
+  }
+  //Breadth First Search, makes use of the nature of a queue to maintain horizontal output
+  BFS() {
+    let node = this.root;
+    let data = [];
+    let queue = [];
+    queue.push(node);
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
+  //Depth First Search, Pre, Post, and In order
+  //Recursivly
+  DFSPreOrder() {
+    let data = [];
+    let current = this.root;
+    const traverse = node => {
+      data.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(current);
+    return data;
+  }
+  //Opposite output 
+  DFSPostOrder() {
+    let data = [];
+    let current = this.root;
+    const traverse = node => {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
+    }
+    traverse(current);
+    return data;
+  }
+  DFSInOrder() {
+    let data = [];
+    let current = this.root;
+    const traverse = node => {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+    traverse(current);
+    return data;
+  }
+}
