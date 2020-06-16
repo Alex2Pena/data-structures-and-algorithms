@@ -1,5 +1,5 @@
 'use strict';
-let tree = require('../../data-structures/tree/tree.js');
+let tree = require('../trees/binary-tree');
 // Code Challenge
 // Conduct “FizzBuzz” on a tree while traversing through it. Change the values of each of the nodes dependent on the current node’s value
 // JavaScript: a folder named fizzBuzzTree which contains a file called fizz-buzz-tree.js

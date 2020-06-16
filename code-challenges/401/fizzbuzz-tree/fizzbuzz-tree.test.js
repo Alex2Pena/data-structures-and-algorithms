@@ -1,8 +1,8 @@
   
 'use strict';
 
-let tree = require('../../data-structures/tree/tree.js');
-let FizzBuzzTree = require('./fizz-buzz-tree.js');
+let tree = require('../trees/binary-tree');
+let FizzBuzzTree = require('./fizzbuzz-tree.js');
 
 describe('happy path', () => {
   it('if the number is divisible by 3, replace with Fizz', () => {

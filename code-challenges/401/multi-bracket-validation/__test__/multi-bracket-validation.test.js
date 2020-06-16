@@ -1,6 +1,6 @@
 'use strict';
 
-let multiBracketValidation = require('./multi-bracket-validation.js');
+let multiBracketValidation = require('../multi-bracket-validation.js');
 
 describe('happy path', () => {
   it('validate a pair of brackets', () => {
