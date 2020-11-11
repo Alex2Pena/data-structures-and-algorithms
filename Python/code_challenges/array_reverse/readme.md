@@ -10,4 +10,4 @@ Write a function called reverseArray which takes an array as an argument. Withou
 
 ## Solution
 
-![array_reverse](./../assets/Screen%20Shot%202020-11-09%20at%202.09.48%20PM.png)
+![array_reverse](../../assets/Screen%20Shot%202020-11-09%20at%202.09.48%20PM.png)
