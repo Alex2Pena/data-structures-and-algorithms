@@ -19,16 +19,11 @@ def test_empty_linked_list():
     assert actual == expected
 
 # Can properly insert into the linked list
-def test_insert(data):
-    actual = data['ll1'].append(1)
-    expected = 1
-    assert actual == expected
-
-def test_add_node_to_front():
+def test_insert_front():
     ll = LinkedList()
-    ll.add_node_to_front(10)
-    actual = ll.head.data
-    expected = 10
+    ll.insert(10)
+    actual = ll.insert(2)
+    expected = 2
     assert actual == expected
 
 # # The head property will properly point to the first node in the linked list
