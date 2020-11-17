@@ -1,6 +1,6 @@
 # Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node.
 class Node:
-    def __init__(self, data):
+    def __init__(self, data, next):
         self.data = data
         self.next = None
 
@@ -11,6 +11,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def __repr__(self):
         node = self.head
@@ -32,37 +33,77 @@ class LinkedList:
         print(''.join("{} -> ".format(*k) for k in enumerate(elements))+'NULL')
 
 # Define a method called insert which takes any value as an argument and adds a new node with that value to the head of the list with an O(1) Time performance.
-    def insert(self, node):
-        node.next = self.head
-        self.head = node
-        return self.head
-
+    def insert(self, data):
+        old_head = self.head
+        self.head = Node(data, self.head)
+        self.head.next = old_head
 
 # Define a method called includes which takes any value as an argument and returns a boolean result depending on whether that value exists as a Node’s value somewhere within the list.
+    def includes(self, data):
+        if self.head == None:
+            return False
+        current_node = self.head
+        while current_node.next != None:
+            current_node = current_node.next
+            if current_node.data == data:
+                return True
+        return False
+
+# returns all values in Linked_list
+    def return_all(self):
+        all_values = []
+        current_node = self.head
+        while current_node != None:
+            all_values.append(current_node.data)
+            print(all_values)
+            current_node = current_node.next
+        return all_values
+
+# .append(value) which adds a new node with the given value to the end of the list
+    # def append(self, data)
+    def append_node(self, data):
+        newNode = Node(data, next=None)
+        if(self.head):
+            current = self.head
+            while(current.next):
+                current = current.next
+            current.next = newNode
+        else:
+            self.head = newNode
+
+# .insertBefore(value, newVal) which add a new node with the given newValue immediately before the first value node
+
+    def insert_before(self, data, newData):
+        newNode = Node(data, next=None)
+        current_node = self.head
+        if current_node == None:
+            return "Sorry no nodes present"
+        else:
+            found_node = None
+            while current_node:
+                if current_node.next == data:
+                    found_node = True
+                    before_insert = current_node
+                    after_insert = current_node.next
+                    before_insert.next = newNode
+                    newNode.next = after_insert
+                    current_node = current_node.next
+                else:
+                    current_node = current_node.next
+            if found_node != True:
+                return "Could not find node"
 
 
+# .insertAfter(value, newVal) which add a new node with the given newValue immediately after the first value node
+
+    # def insert_after(data, newData)
 
 # only run this when running directly as a "script"
-# if __name__ == "__main__":
+if __name__ == "__main__":
+    ll=LinkedList()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    ll.insert(4)
+    ll.return_all()
 
-
-
-
-# Any exceptions or errors that come from your code should be semantic, capturable errors. For example, rather than a default error thrown by your language, your code should raise/throw a custom, semantic error that describes what went wrong in calling the methods you wrote for this lab.
-# Be sure to follow your language/frameworks standard naming conventions (e.g. C# uses PascalCasing for all method and class names).
-# Structure and Testing
-# Utilize the Single-responsibility principle: any methods you write should be clean, reusable, abstract component parts to the whole challenge. You will be given feedback and marked down if you attempt to define a large, complex algorithm in one function definition.
-
-# Write tests to prove the following functionality:
-
-# Can successfully instantiate an empty linked list
-# Can properly insert into the linked list
-# The head property will properly point to the first node in the linked list
-# Can properly insert multiple nodes into the linked list
-# Will return true when finding a value within the linked list that exists
-# Will return false when searching for a value in the linked list that does not exist
-# Can properly return a collection of all the values that exist in the linked list
-# Ensure your tests are passing before you submit your solution.
-
-# Stretch Goal
-# Create a new branch called doubly-linked-list, and, using the resources available to you online, implement a doubly linked list (completely separate from your singly linked list).
