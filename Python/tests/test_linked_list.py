@@ -1,4 +1,6 @@
 from linked_list.linked_list import LinkedList
+import pytest
+
 
 # Test if class is imported
 def test_import():
@@ -88,6 +90,7 @@ def test_append():
 
 
 # Can successfully insert a node before a node located in the middle of a linked list
+# @pytest.mark.skip("testing infinite loop")
 def test_insert_before():
     ll = LinkedList()
     ll.append_node(1)
@@ -104,20 +107,65 @@ def test_insert_before():
 
 
 # Can successfully insert after a node in the middle of the linked list
-# def test_insert_before():
-#     ll = LinkedList()
-#     ll.append_node(1)
-#     ll.append_node(2)
-#     ll.append_node(3)
-#     ll.append_node(4)
-#     ll.append_node(5)
-#     ll.insert_after(3,3.5)
-#     actual = ll.return_all()
-#     expected = [1,2,3,3.5,4,5]
-#     assert actual == expected
+def test_insert_after():
+    ll = LinkedList()
+    ll.append_node(1)
+    ll.append_node(2)
+    ll.append_node(3)
+    ll.append_node(4)
+    ll.append_node(5)
+    ll.insert_after(3,3.5)
+    actual = ll.return_all()
+    expected = [1,2,3,3.5,4,5]
+    assert actual == expected
 
 # Can successfully insert a node after the last node of the linked list
 
 
+# Where k is greater than the length of the linked list
+def test_is_k_longer_than_length():
+    ll = LinkedList()
+    ll.append_node(1)
+    ll.append_node(2)
+    ll.append_node(3)
+    with pytest.raises(IndexError):
+        ll.find_kth_value_from_end(4)
 
+# Where k and the length of the list are the same
+def test_is_k_same_as_length():
+    ll = LinkedList()
+    ll.append_node("a")
+    ll.append_node("b")
+    ll.append_node("c")
+    actual = ll.find_kth_value_from_end(2)
+    expected = "a"
+    assert actual == expected
+
+# Where k is not a positive integer
+def test_negative_input():
+    ll = LinkedList()
+    ll.append_node(1)
+    ll.append_node(2)
+    ll.append_node(3)
+    # test will pass if code in block causes expected ERROR
+    with pytest.raises(ValueError):
+        ll.find_kth_value_from_end(-1)
+
+# Where the linked list is of a size 1
+def test_single_node_ll():
+    ll = LinkedList()
+    ll.insert("a")
+    actual = ll.find_kth_value_from_end(0)
+    expected = "a"
+    assert actual == expected
+
+# “Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+def test_k_in_middle():
+    ll = LinkedList()
+    ll.append_node("a")
+    ll.append_node(3)
+    ll.append_node("3")
+    actual = ll.find_kth_value_from_end(1)
+    expected = 3
+    assert actual == expected
 

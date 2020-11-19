@@ -1,11 +1,11 @@
 # Create a Node class that has properties for the value stored in the Node, and a pointer to the next Node.
 class Node:
-    def __init__(self, data, next):
+    def __init__(self, data, next=None):
         self.data = data
-        self.next = None
+        self.next = next
 
     def __repr__(self):
-        return self.data
+        return f"{{ {str(self.data)} }} -> "
 
 # Within your LinkedList class, include a head property. Upon instantiation, an empty Linked List should be created.
 class LinkedList:
@@ -21,6 +21,14 @@ class LinkedList:
             node = node.next
         nodes.append("None")
         return " -> ".join(nodes)
+
+    def __str__(self):
+        res = ""
+        current = self.head
+        while current:
+            res += f"{{ {str(current.data)} }} -> "
+            current = current.next
+        return res + "NULL"
 
 # Define a method called toString (or __str__ in Python) which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
 # "{ a } -> { b } -> { c } -> NULL"
@@ -74,36 +82,64 @@ class LinkedList:
 # .insertBefore(value, newVal) which add a new node with the given newValue immediately before the first value node
 
     def insert_before(self, data, newData):
-        newNode = Node(data, next=None)
         current_node = self.head
         if current_node == None:
             return "Sorry no nodes present"
-        else:
-            found_node = None
-            while current_node:
-                if current_node.next == data:
-                    found_node = True
-                    before_insert = current_node
-                    after_insert = current_node.next
-                    before_insert.next = newNode
-                    newNode.next = after_insert
-                    current_node = current_node.next
-                else:
-                    current_node = current_node.next
-            if found_node != True:
-                return "Could not find node"
+        if current_node.data == data:
+            current_node.next = Node(newData, current_node.next)
+            return
+        found_node = None
+        while current_node.next:
+            if current_node.next.data == data:
+                found_node = True
+                current_node.next = Node(newData, current_node.next)
+                return
+            else:
+                current_node = current_node.next
+        if found_node != True:
+            return "Could not find node"
 
 
 # .insertAfter(value, newVal) which add a new node with the given newValue immediately after the first value node
 
-    # def insert_after(data, newData)
+    def insert_after(self, data, newData):
+        if not self.head:
+            return
+        current_node = self.head
+        while current_node:
+            if current_node.data == data:
+                current_node.next = Node(newData, current_node.next)
+                return
+            current_node = current_node.next
+
+# Write a method for the Linked List class which takes a number, k, as a parameter. Return the node’s value that is k from the end of the linked list. You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges. Example: [1,2,3,4,5,6,7] kth = 2
+#                                                 ^
+
+    def find_kth_value_from_end(self, kth):
+        count = 0
+        leader = self.head
+        follower = self.head
+
+        if kth < 0:
+            raise ValueError("You cannot enter a negative integer")
+        while count <= kth and leader:
+            leader = leader.next
+            count += 1
+        while leader:
+            leader = leader.next
+            follower = follower.next
+            count +=1
+        if kth > count:
+            raise IndexError("The list is not that big")
+        return follower.data
+
+
+
+
+
+
 
 # only run this when running directly as a "script"
 if __name__ == "__main__":
-    ll=LinkedList()
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(3)
-    ll.insert(4)
-    ll.return_all()
+    pass
 
