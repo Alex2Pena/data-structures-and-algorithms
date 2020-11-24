@@ -11,7 +11,6 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None
 
     def __repr__(self):
         node = self.head
@@ -32,13 +31,13 @@ class LinkedList:
 
 # Define a method called toString (or __str__ in Python) which takes in no arguments and returns a string representing all the values in the Linked List, formatted as:
 # "{ a } -> { b } -> { c } -> NULL"
-    def __str__(self):
-        elements = []
-        current = self.head
-        while current.next != None:
-            current = current.next
-            elements.append(current.data)
-        print(''.join("{} -> ".format(*k) for k in enumerate(elements))+'NULL')
+    # def __str__(self):
+    #     elements = []
+    #     current = self.head
+    #     while current.next != None:
+    #         current = current.next
+    #         elements.append(current.data)
+    #     print(''.join("{} -> ".format(*k) for k in enumerate(elements))+'NULL')
 
 # Define a method called insert which takes any value as an argument and adds a new node with that value to the head of the list with an O(1) Time performance.
     def insert(self, data):
@@ -132,9 +131,6 @@ class LinkedList:
         if kth > count:
             raise IndexError("The list is not that big")
         return follower.data
-
-
-
 
 
 
