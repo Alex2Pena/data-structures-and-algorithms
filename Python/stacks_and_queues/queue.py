@@ -4,17 +4,17 @@ class Node(object):
         self.value = value
         self.next = next_
 
-    def __str__(self):
-        """
-        """
-        return f'<Node Value: { self.value }>'
+    # def __str__(self):
+    #     """
+    #     """
+    #     return f'<Node Value: { self.value }>'
 
-    def __repr__(self):
-        """
-        """
-        return f'<Node Value: { self.value }'
+    # def __repr__(self):
+    #     """
+    #     """
+    #     return f'<Node Value: { self.value }'
 
-# needs to be inported by test
+# needs to be imported by test
 class InvalidOperationError(Exception):
     pass
 
@@ -32,10 +32,15 @@ class Queue(object):
             return False
 
     def enqueue(self, value):
-        if value is None:
-            raise ValueError('Node value cannot be none')
         new_node = Node(value)
-        new_node.next = self.back
+        if not self.front:
+            self.front = new_node
+            self.back = new_node
+            self.size += 1
+            return new_node
+        if value is None:
+            raise InvalidOperationError('Node value cannot be none')
+        self.back.next = new_node
         self.back = new_node
         self.size += 1
         if self.size == 1:
@@ -43,7 +48,7 @@ class Queue(object):
         return new_node
 
     def dequeue(self):
-        if not self.front:
+        if self.front == None:
             raise InvalidOperationError('Cannot dequeue from empty queue')
         current_node = self.front
         if self.front:
@@ -52,15 +57,6 @@ class Queue(object):
         return str(current_node.value)
 
     def peek(self):
-        if not self.front:
+        if self.front == None:
             raise InvalidOperationError("Method not allowed on empty collection")
         return str(self.front.value)
-
-
-q = Queue()
-q.enqueue("apples")
-q.enqueue("bananas")
-q.dequeue()
-test = q.peek()
-
-print(test)
