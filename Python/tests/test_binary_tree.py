@@ -7,13 +7,21 @@ def test_import():
     assert BinarySearchTree
 
 def test_instantiate_empty_tree():
-    bst = BinaryTree()
-    assert bst.root is None
+    bt = BinaryTree()
+    assert bt.root is None
+
+# def test_multiple_nodes():
+#     bt = BinaryTree()
+#     bt.add(1)
+#     bt.add(2)
+#     bt.add(3)
+#     bt.add(4)
 
 def test_instantiate_single_root():
     bst = BinarySearchTree()
     bst.add(1)
     assert bst.root.value == 1
+
 
 def test_add_to_left():
     bst = BinarySearchTree()
