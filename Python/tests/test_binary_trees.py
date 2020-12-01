@@ -64,3 +64,11 @@ def test_return_postorder_traversal():
     expected = [2,6,3]
     assert actual == expected
 
+def test_max():
+    tree = BinaryTree()
+    tree.randomly_add(3)
+    tree.randomly_add(4)
+    tree.randomly_add(11)
+    tree.randomly_add(5)
+    tree.randomly_add(9)
+    assert tree.find_maximum_value() == 11
