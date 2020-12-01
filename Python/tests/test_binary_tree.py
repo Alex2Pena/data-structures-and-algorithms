@@ -10,12 +10,12 @@ def test_instantiate_empty_tree():
     bt = BinaryTree()
     assert bt.root is None
 
-# def test_multiple_nodes():
-#     bt = BinaryTree()
-#     bt.add(1)
-#     bt.add(2)
-#     bt.add(3)
-#     bt.add(4)
+def test_multiple_nodes():
+    bt = BinaryTree()
+    bt.randomly_add(1)
+    bt.randomly_add(2)
+    bt.randomly_add(3)
+    assert bt.root.right.value == 3
 
 def test_instantiate_single_root():
     bst = BinarySearchTree()
@@ -39,7 +39,6 @@ def test_add_to_right():
 
 def test_return_preorder_traversal():
     bst = BinarySearchTree()
-    bt = BinaryTree()
     bst.add(3)
     bst.add(2)
     bst.add(6)
@@ -49,7 +48,6 @@ def test_return_preorder_traversal():
 
 def test_return_inorder_traversal():
     bst = BinarySearchTree()
-    bt = BinaryTree()
     bst.add(3)
     bst.add(2)
     bst.add(6)
@@ -59,10 +57,10 @@ def test_return_inorder_traversal():
 
 def test_return_postorder_traversal():
     bst = BinarySearchTree()
-    bt = BinaryTree()
     bst.add(3)
     bst.add(2)
     bst.add(6)
     actual = bst.post_order()
     expected = [2,6,3]
     assert actual == expected
+

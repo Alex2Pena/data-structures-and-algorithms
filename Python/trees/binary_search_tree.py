@@ -1,4 +1,4 @@
-from binary_tree import Node, BinaryTree
+from .binary_tree import Node, BinaryTree
 
 class BinarySearchTree(BinaryTree):
 
@@ -7,8 +7,8 @@ class BinarySearchTree(BinaryTree):
 
     def add(self, value):
         new_node = Node(value)
-        def walk(node, value):
 
+        def walk(node, value):
             if node is None:
                 self.root = new_node
                 return
@@ -17,13 +17,13 @@ class BinarySearchTree(BinaryTree):
                 if not node.left:
                     node.left = new_node
                 else:
-                   walk(node.left)
+                   walk(node.left, value)
 
             else:
                 if not node.right:
                     node.right = new_node
                 else:
-                    walk(node.right)
+                    walk(node.right, value)
 
         walk(self.root, value)
 
