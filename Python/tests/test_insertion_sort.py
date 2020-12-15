@@ -1,4 +1,4 @@
-from code_challenges.insertion_sort import sort_insertion_temp, sort_insertion_swap
+from code_challenges.insertion_sort.insertion_sort import sort_insertion_temp, sort_insertion_swap
 
 import pytest
 
@@ -18,9 +18,9 @@ def test_sort_insertion_temp_simple_array():
     assert actual == expected
 
 def test_sort_insertion_temp_negative_array():
-    arr = [8,4,23,42,16,15]
+    arr = [8,4,23,42,-16,15]
     actual = sort_insertion_temp(arr)
-    expected = [4,8,15,16,23,42]
+    expected = [-16,4,8,15,23,42]
     assert actual == expected
 
 def test_sort_insertion_temp_unique_array():
@@ -45,9 +45,9 @@ def test_sort_insertion_swap_simple_array():
     assert actual == expected
 
 def test_sort_insertion_swap_negative_array():
-    arr = [8,4,23,42,16,15]
+    arr = [8,4,23,42,-16,15]
     actual = sort_insertion_swap(arr)
-    expected = [4,8,15,16,23,42]
+    expected = [-16,4,8,15,23,42]
     assert actual == expected
 
 def test_sort_insertion_swap_unique_array():
