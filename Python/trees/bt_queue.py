@@ -18,45 +18,45 @@ class Node(object):
 class InvalidOperationError(Exception):
     pass
 
-class Queue(object):
+class Queue():
 
     def __init__(self):
-        self.front = None
-        self.back = None
+        self.left = None
+        self.right = None
         self.size = 0
 
     def is_empty(self):
-        if not self.front:
+        if not self.left:
             return True
         else:
             return False
 
     def enqueue(self, value):
         new_node = Node(value)
-        if not self.front:
-            self.front = new_node
-            self.back = new_node
+        if not self.left:
+            self.left = new_node
+            self.right = new_node
             self.size += 1
             return new_node
         if value is None:
             raise InvalidOperationError('Node value cannot be none')
-        self.back.next = new_node
-        self.back = new_node
+        self.right.next = new_node
+        self.right = new_node
         self.size += 1
         if self.size == 1:
-            self.front = new_node
+            self.left = new_node
         return new_node
 
     def dequeue(self):
-        if self.front == None:
+        if self.left == None:
             raise InvalidOperationError('Cannot dequeue from empty queue')
-        current_node = self.front
-        if self.front:
-            self.front = self.front.next
+        current_node = self.left
+        if self.left:
+            self.left = self.left.next
             self.size -= 1
-        return str(current_node.value)
+        return current_node.value
 
     def peek(self):
-        if self.front == None:
+        if self.left == None:
             raise InvalidOperationError("Method not allowed on empty collection")
-        return str(self.front.value)
+        return self.left.value

@@ -1,10 +1,10 @@
-import pytest
+# import pytest
 
-from stacks_and_queues.pseudo_queue import Stack, PseudoQueue, InvalidOperationError
-test_stack = Stack()
-test_stack.push(11)
-test_stack.push(12)
-test_stack.push(20)
+# from stacks_and_queues.pseudo_queue import Stack, PseudoQueue, InvalidOperationError
+# test_stack = Stack()
+# test_stack.push(11)
+# test_stack.push(12)
+# test_stack.push(20)
 
 @pytest.mark.skip
 def test_enqueue():
