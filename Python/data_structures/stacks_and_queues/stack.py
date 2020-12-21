@@ -3,17 +3,16 @@ class Node(object):
         self.value = value
         self.next = next_
 
-    # def __str__(self):
-    #     """
-    #     """
-    #     return f'<Node Value: { self.value }>'
+    def __str__(self):
+        """
+        """
+        return f'<Node Value: { self.value }>'
 
-    # def __repr__(self):
-    #     """
-    #     """
-    #     return f'<Node Value: { self.value }'
+    def __repr__(self):
+        """
+        """
+        return f'<Node Value: { self.value }'
 
-# needs to be inported by test
 class InvalidOperationError(Exception):
     pass
 

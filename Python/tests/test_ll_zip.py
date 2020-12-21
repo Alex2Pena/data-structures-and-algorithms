@@ -1,5 +1,5 @@
+from data_structures.linked_list.linked_list import LinkedList
 from code_challenges.ll_zip.ll_zip import zipList
-from linked_list.linked_list import LinkedList
 
 # import pytest
 
