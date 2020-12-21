@@ -1,6 +1,7 @@
 import pytest
+from data_structures.stacks_and_queues.stack import Stack
+from data_structures.stacks_and_queues.pseudo_queue import PseudoQueue, InvalidOperationError
 
-from stacks_and_queues.pseudo_queue import Stack, PseudoQueue, InvalidOperationError
 test_stack = Stack()
 test_stack.push(11)
 test_stack.push(12)

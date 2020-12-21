@@ -1,5 +1,5 @@
 import pytest
-from data_structures.stacks_and_queues.stacks_and_queues import Queue, InvalidOperationError
+from data_structures.stacks_and_queues.queue import Queue, InvalidOperationError
 
 def test_enqueue():
     q = Queue()
