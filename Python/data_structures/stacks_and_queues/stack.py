@@ -1,25 +1,22 @@
 class Node(object):
-    """Class of node objects for Queue."""
-
     def __init__(self, value, next_ = None):
         self.value = value
         self.next = next_
 
-    # def __str__(self):
-    #     """
-    #     """
-    #     return f'<Node Value: { self.value }>'
+    def __str__(self):
+        """
+        """
+        return f'<Node Value: { self.value }>'
 
-    # def __repr__(self):
-    #     """
-    #     """
-    #     return f'<Node Value: { self.value }'
+    def __repr__(self):
+        """
+        """
+        return f'<Node Value: { self.value }'
 
-# needs to be inported by test
 class InvalidOperationError(Exception):
     pass
 
-class Stack(object):
+class Stack():
     def __init__(self):
         self.top = None
         self.size = 0
