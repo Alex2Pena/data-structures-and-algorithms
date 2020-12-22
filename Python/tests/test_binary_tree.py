@@ -1,5 +1,5 @@
-from trees.binary_tree import BinaryTree
-from trees.binary_search_tree import BinarySearchTree
+from data_structures.trees.binary_tree import BinaryTree
+from data_structures.trees.binary_search_tree import BinarySearchTree
 
 
 def test_import():
