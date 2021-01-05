@@ -1,5 +1,5 @@
 import pytest
-from code_challenges.pascals_triangle.pascals_triangle import pascals_triangle, PascalTriangle
+from code_challenges.pascals_triangle.pascals_triangle import pascals_triangle
 
 def test_import():
     assert pascals_triangle
