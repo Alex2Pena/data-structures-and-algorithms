@@ -1,5 +1,4 @@
 class Node:
-
     # Constructor to initialize the node object
     def __init__(self, data):
         # Creates a Node with (data) and give it a next property
@@ -7,7 +6,6 @@ class Node:
         self.next = None
 
 class LinkedList:
-
     # Function to initialize head
     def __init__(self):
         # Initialize an empty list
@@ -27,9 +25,7 @@ class LinkedList:
     def isPalindrome(self):
         if not self.head:
             return TypeError
-            
         node = self.head
-
         # Append all nodes to form a string
         temp = []
         while (node is not None):
@@ -44,7 +40,6 @@ class LinkedList:
         while (temp):
             print(temp.data),
             temp = temp.next
-
 
 # Driver program to test above function
 llist = LinkedList()
